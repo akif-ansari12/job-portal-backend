@@ -11,6 +11,20 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: job_portal_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,14 +41,20 @@ jobs:
 
       - name: Run migrations
         env:
-          DB_ENGINE: django.db.backends.sqlite3
-          DB_NAME: db.sqlite3
+          DB_NAME: job_portal_db
+          DB_USER: root
+          DB_PASSWORD: root
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
         run: |
           python manage.py migrate
 
       - name: Run tests
         env:
-          DB_ENGINE: django.db.backends.sqlite3
-          DB_NAME: db.sqlite3
+          DB_NAME: job_portal_db
+          DB_USER: root
+          DB_PASSWORD: root
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
         run: |
           python manage.py test
