@@ -6,6 +6,7 @@ Django settings for config project.
 from pathlib import Path
 import os
 
+
 # ============================================================
 # BASE DIRECTORY
 # ============================================================
@@ -66,7 +67,7 @@ MIDDLEWARE = [
 
 
 # ============================================================
-# URLS
+# URL CONFIGURATION
 # ============================================================
 
 ROOT_URLCONF = 'config.urls'
@@ -100,7 +101,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # ============================================================
-# DATABASE
+# DATABASE - POSTGRESQL
 # ============================================================
 
 DATABASES = {
@@ -198,4 +199,3 @@ REST_FRAMEWORK = {
 # ============================================================
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
