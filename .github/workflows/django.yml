@@ -8,7 +8,6 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     services:
@@ -37,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install django djangorestframework mysqlclient djangorestframework-simplejwt
+          pip install -r requirements.txt
 
       - name: Run migrations
         env:
