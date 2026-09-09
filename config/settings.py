@@ -30,6 +30,10 @@ ALLOWED_HOSTS = os.getenv(
     'localhost,127.0.0.1'
 ).split(',')
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://job-portal-backend-2-xo58.onrender.com",
+]
+
 
 # ============================================================
 # APPLICATIONS
